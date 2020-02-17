@@ -73,7 +73,7 @@ WORDS = [
     'kratos',
     'nathan',
     'lara',
-    'Elli',
+    'elli',
     'snake',
     'computer',
 ]
@@ -91,12 +91,25 @@ def display_board(hidde_word, tries):
 
 def run():
     word = random_word()
-    hidde_word = ['=']*len(word)
+    hidde_word = ['°']*len(word)
     tries=0
 
     while True:
         display_board(hidde_word, tries)
         current_letter= str(input('Choose a letter: '))
+
+        letter_index_user = []
+        for idx in range(len(word)): #Recorre word mirando si alguno es igual a la letra del usuario
+            if word[idx] == current_letter:
+                letter_index_user.append(idx) 
+            
+        if len(letter_index_user)==0:
+            tries+=1
+        else:
+            for idx in letter_index_user:
+                hidde_word[idx]= current_letter
+            
+            letter_index_user = []
 
 if __name__ == '__main__':
     print('-------------------------------')
