@@ -103,13 +103,19 @@ def run():
             if word[idx] == current_letter:
                 letter_index_user.append(idx) 
             
-        if len(letter_index_user)==0:
+        if len(letter_index_user)==0: #Codigo pregunta una vez y repite
             tries+=1
+            if(tries==7):
+                display_board(hidde_word, tries)
+                print('')
+                print('I am sorry, you fail :c')
+                print(f'The correct word was {word}')
+                break
         else:
             for idx in letter_index_user:
-                hidde_word[idx]= current_letter
+                hidde_word[idx]= current_letter # Realiza intercambio por letra del usurario
             
-            letter_index_user = []
+            letter_index_user = [] # Repite ciclo po eso se inicializa en cero
 
 if __name__ == '__main__':
     print('-------------------------------')
