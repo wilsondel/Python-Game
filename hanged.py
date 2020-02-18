@@ -115,7 +115,13 @@ def run():
             for idx in letter_index_user:
                 hidde_word[idx]= current_letter # Realiza intercambio por letra del usurario
             
-            letter_index_user = [] # Repite ciclo po eso se inicializa en cero
+            letter_index_user = [] # Repite ciclo por eso se inicializa en cero
+        try:
+            hidde_word.index('°')
+        except ValueError:
+            print(f'Hey! you Win. Congratulations!! you guess {word}')
+            break
+
 
 if __name__ == '__main__':
     print('-------------------------------')
